@@ -1,20 +1,12 @@
 // const { gql } = require('apollo-server-express');
 
 // const typeDefs = gql`
-//   type Book {
-//     _id: ID
-//     title: String
-//     author: String
-//     pages: Int
-//   }
 
-//   type Query {
-//     books: [Book]
-//     book(title: String!): Book
-//   }
+
+ 
 
 //   type Mutation {
-//     addBook(title: String!, author: String!, pages: Int!): Book
+    
 //   }
 // `;
 
@@ -23,13 +15,19 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
+type Book {
+  _id: ID
+  title: String
+  author: String
+  pages: Int
+}
+
   type User {
-    _id: ID
+ 
     username: String
     email: String
-    friendCount: Int
-    thoughts: [Thought]
-    friends: [User]
+    _id: ID
+   
   }
 
   type Thought {
@@ -54,6 +52,10 @@ const typeDefs = gql`
   }
 
   type Query {
+    
+      books: [Book]
+      book(title: String!): Book
+    
     me: User
     users: [User]
     user(username: String!): User
@@ -62,6 +64,7 @@ const typeDefs = gql`
   }
 
   type Mutation {
+    addBook(title: String!, author: String!, pages: Int!): Book
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     addThought(thoughtText: String!): Thought
